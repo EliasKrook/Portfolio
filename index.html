@@ -740,10 +740,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center bottom;
       animation: heroBgIntro 14s ease-out forwards;
       will-change: transform;
-      transform-origin: center;
+      transform-origin: center bottom;
+    }
+    @keyframes heroBgIntro {
+      0%   { transform: scale(1)    translateY(5%); }
+      100% { transform: scale(1.12) translateY(0%); }
     }
     .hero-bg::after {
       content: '';
@@ -1272,6 +1276,7 @@
       if (bgImg) {
         const prog = Math.min(window.scrollY / heroEl.offsetHeight, 1);
         bgImg.style.transform = `scale(1.12) translateY(${prog * -3}%)`;
+        bgImg.style.transformOrigin = 'center bottom';
       }
       const scrollY   = window.scrollY;
       const heroH     = heroEl.offsetHeight;
